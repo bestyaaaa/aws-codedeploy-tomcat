@@ -3,8 +3,6 @@ os: linux
 files:
   - source: /target/WebApp.war
     destination: /tmp/codedeploy/
-  - source: /target/TLPromptWs.war
-    destination: /tmp/codedeploy/
   - source: /tomcat-config/server.xml
     destination: /tmp/codedeploy/
 hooks:
