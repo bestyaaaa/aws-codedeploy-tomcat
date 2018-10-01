@@ -23,4 +23,3 @@ cp $SERVERXML_STAGED_LOCATION $CATALINA_HOME/conf/server.xml
 chmod 644 $CATALINA_HOME/conf/server.xml
 
 chown tomcat. -R $CATALINA_HOME
-chmod 777 -R $TLPROMPT_DIR
