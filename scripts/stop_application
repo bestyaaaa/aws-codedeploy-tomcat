@@ -1,0 +1,11 @@
+#!/bin/bash
+
+set -e
+
+APP_HOME='/opt/tomcat'
+
+echo "Stopping Tomcat Application ..."
+
+if [[ -d $APP_HOME ]]; then
+    /etc/init.d/tomcat stop
+fi

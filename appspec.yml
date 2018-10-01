@@ -1,0 +1,25 @@
+version: 0.0
+os: linux
+files:
+  - source: /target/WebApp.war
+    destination: /tmp/codedeploy/
+  - source: /target/TLPromptWs.war
+    destination: /tmp/codedeploy/
+  - source: /tomcat-config/server.xml
+    destination: /tmp/codedeploy/
+hooks:
+  ApplicationStop:
+    - location: scripts/stop_application
+      timeout: 300
+  BeforeInstall:
+    - location: scripts/install_dependencies
+      timeout: 300
+  AfterInstall:
+    - location: scripts/after_install
+      timeout: 300
+  ApplicationStart:
+    - location: scripts/start_application
+      timeout: 300
+  ValidateService:
+    - location: scripts/basic_health_check.sh
+

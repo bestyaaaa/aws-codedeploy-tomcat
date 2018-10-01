@@ -1,0 +1,26 @@
+#!/bin/bash
+
+set -e
+
+CATALINA_HOME='/opt/tomcat'
+
+TEMP_STAGING_DIR='/tmp/codedeploy'
+BACKEND_STAGED_LOCATION="$TEMP_STAGING_DIR/WebApp.war"
+#SERVERXML_STAGED_LOCATION="$TEMP_STAGING_DIR/server.xml"
+#SETENV_STAGED_LOCATION="$TEMP_STAGING_DIR/setenv.sh"
+
+# Remove unpacked application artifacts
+if [ -f $CATALINA_HOME/webapps/WebApp.war ]; then
+    rm $CATALINA_HOME/webapps/WebApp.war
+fi
+
+# Copy the WAR file to the webapps directory
+cp $BACKEND_STAGED_LOCATION $CATALINA_HOME/webapps/WebApp.war
+
+# Put server.xml in config
+rm -f $CATALINA_HOME/conf/server.xml
+cp $SERVERXML_STAGED_LOCATION $CATALINA_HOME/conf/server.xml
+chmod 644 $CATALINA_HOME/conf/server.xml
+
+chown tomcat. -R $CATALINA_HOME
+chmod 777 -R $TLPROMPT_DIR
