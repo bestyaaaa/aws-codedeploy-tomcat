@@ -2,7 +2,7 @@
 
 for i in `seq 1 30`;
 do
-  HTTP_CODE=`curl --write-out '%{http_code}' -o /dev/null -m 5 -q -s http://localhost:80/TLPromptBackendWs/`
+  HTTP_CODE=`curl --write-out '%{http_code}' -o /dev/null -m 5 -q -s http://localhost:80/WebApp/`
   if [ "$HTTP_CODE" == "200" ]; then
     echo "Successfully pulled root page."
     exit 0;
